@@ -1810,7 +1810,7 @@ const Cam={
   x:0,z:0,y:CFG.player.eye,yaw:0,pitch:0,shake:0,sx:0,sy:0,sz:0,roll:0,
   recoilP:0,recoilY:0,fov:76,fovTarget:76,bob:0,bobAmt:0,
   look(dx,dy){
-    if(SET.invert){dx=-dx;dy=-dy;}
+    if(SET.invert){dx=-dx;}
     const s=SET.sens/100*.0022;
     this.yaw+=dx*s;this.pitch=clamp(this.pitch-dy*s,-1.45,1.45);
     if(this.yaw>Math.PI)this.yaw-=TAU;if(this.yaw<-Math.PI)this.yaw+=TAU;
@@ -1976,8 +1976,8 @@ class Player{
     let ix=0,iz=0;
     if(Input.down('KeyW')||Input.down('ArrowUp'))iz-=1;
     if(Input.down('KeyS')||Input.down('ArrowDown'))iz+=1;
-    if(Input.down('KeyA')||Input.down('ArrowLeft'))ix-=1;
-    if(Input.down('KeyD')||Input.down('ArrowRight'))ix+=1;
+    if(Input.down('KeyA')||Input.down('ArrowLeft'))ix+=1;
+    if(Input.down('KeyD')||Input.down('ArrowRight'))ix-=1;
     if(Input.isTouch){ ix+=Input.touch.mx; iz+=Input.touch.my; }
     const mag=Math.hypot(ix,iz);
     if(mag>1){ix/=mag;iz/=mag;}
